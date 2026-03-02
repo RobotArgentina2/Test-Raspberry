@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Ambiente - PiServer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Monitor de Ambiente (<span id="pi-status">Pi3</span>)</h1>
+      <p>Servidor Express + Node.js para monitoreo remoto</p>
+    </header>
+
+    <main>
+      <!-- Formulario para ingresar datos -->
+      <section class="card form-card">
+        <h2>Registrar Nueva Lectura</h2>
+        <form id="sensor-form">
+          <div class="input-group">
+            <label for="temperature">Temperatura (°C)</label>
+            <input type="number" id="temperature" name="temperature" step="0.1" required placeholder="Ej: 22.5">
+          </div>
+          <div class="input-group">
+            <label for="humidity">Humedad (%)</label>
+            <input type="number" id="humidity" name="humidity" step="0.1" min="0" max="100" required placeholder="Ej: 45.0">
+          </div>
+          <button type="submit" id="submit-btn" class="submit-button">
+            <span class="btn-text">Guardar Lectura</span>
+            <span class="btn-loader" hidden></span>
+          </button>
+        </form>
+        <div id="status-message" class="status-message"></div>
+      </section>
+
+      <!-- Historial de datos -->
+      <section class="card history-card">
+        <div class="history-header">
+          <h2>Historial de Lecturas</h2>
+          <button id="refresh-btn" class="icon-button" title="Refrescar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="refresh-icon"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Temp</th>
+                <th>Hum</th>
+                <th>Fecha/Hora</th>
+              </tr>
+            </thead>
+            <tbody id="readings-body">
+              <!-- Datos cargados mediante JavaScript -->
+              <tr class="placeholder-row">
+                <td colspan="4">Cargando datos...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Node.js Server running on Raspberry Pi 3</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
