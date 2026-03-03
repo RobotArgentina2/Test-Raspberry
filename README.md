@@ -1,6 +1,7 @@
 # Guía de Despliegue en Raspberry Pi 3
 ---
 Este proyecto es un servidor de monitoreo ambiental que utiliza **Node.js**, **Express** y **SQLite**. Está diseñado para ser ligero y eficiente, ideal para una Raspberry Pi 3.
+<img src="public/monitoreo.jpg" height="200">
 
 ## 1. Requisitos Previos en la Raspberry Pi
 
