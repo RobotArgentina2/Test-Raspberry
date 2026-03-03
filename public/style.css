@@ -72,12 +72,18 @@ body {
 }
 
 @keyframes move {
-  from { transform: translate(0, 0); }
-  to { transform: translate(100px, 100px); }
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(100px, 100px);
+  }
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1200px;
+  /* Incrementado para dar espacio al gráfico */
   width: 100%;
   z-index: 10;
 }
@@ -92,6 +98,7 @@ h1 {
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
 }
@@ -102,8 +109,21 @@ p {
 }
 
 main {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .top-section {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -199,8 +219,13 @@ input:focus {
   min-height: 1.2rem;
 }
 
-.status-error { color: var(--error-color); }
-.status-success { color: var(--success-color); }
+.status-error {
+  color: var(--error-color);
+}
+
+.status-success {
+  color: var(--success-color);
+}
 
 .history-header {
   display: flex;
@@ -263,8 +288,15 @@ tr:last-child td {
   border-bottom: none;
 }
 
-.temp-cell { color: #fb923c; font-weight: 600; }
-.hum-cell { color: #38bdf8; font-weight: 600; }
+.temp-cell {
+  color: #fb923c;
+  font-weight: 600;
+}
+
+.hum-cell {
+  color: #38bdf8;
+  font-weight: 600;
+}
 
 footer {
   text-align: center;
@@ -275,12 +307,32 @@ footer {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
   animation: fadeIn 0.8s ease-out backwards;
+}
+
+.chart-card {
+  animation-delay: 0.1s;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  position: relative;
+  flex-grow: 1;
+  min-height: 250px;
+  width: 100%;
 }
 
 .history-card {
